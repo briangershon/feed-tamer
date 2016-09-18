@@ -1,0 +1,21 @@
+{
+  "name": "feed-tamer",
+  "version": "1.0.0",
+  "description": "Find list of users who contribute the most traffic to your Twitter home timeline",
+  "author": "Brian Gershon <brian.five@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/briangershon/feed-tamer"
+  },
+  "engines": {
+    "node": ">=5.11.0"
+  },
+  "scripts": {
+    "start": "node tryit.js"
+  },
+  "dependencies": {
+    "lodash": "^4.15.0",
+    "twitter": "^1.4.0"
+  }
+}
