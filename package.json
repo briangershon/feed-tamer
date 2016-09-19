@@ -15,6 +15,7 @@
     "start": "node tryit.js"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "lodash": "^4.15.0",
     "twitter": "^1.4.0"
   }
