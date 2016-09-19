@@ -59,8 +59,8 @@ feedTamer.homeFeedContributors(creds, screenName, NUMBER_OF_TWEETS_TO_GATHER, (e
 ```
 Analyzing 800 most recent tweets for "my_twitter_name"...
 Contributors to home feed:
-[ { name: 'dbr', count: 74 },
-  { name: 'nolanlawson', count: 28 },
+[ { name: 'user_abc', count: 74 },
+  { name: 'user_123', count: 28 },
   ...
   ...
 ]
