@@ -4,6 +4,13 @@
   "description": "Find list of users who contribute the most traffic to your Twitter home timeline",
   "author": "Brian Gershon <brian.five@gmail.com>",
   "license": "MIT",
+  "keywords": [
+    "twitter",
+    "feed",
+    "timeline",
+    "following",
+    "traffic"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/briangershon/feed-tamer"
