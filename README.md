@@ -75,5 +75,4 @@ feedTamer.homeFeedContributors(creds, screenName, NUMBER_OF_TWEETS_TO_GATHER, (e
 
 Build Status
 ------------
-
 [![Build Status](https://travis-ci.org/briangershon/feed-tamer.png?branch=master)](https://travis-ci.org/briangershon/feed-tamer)
