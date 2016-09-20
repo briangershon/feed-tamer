@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+
 var Twitter = require('twitter');
 var _ = require('lodash');
 var async = require('async');
@@ -17,13 +19,13 @@ exports.default = {
     var allTweets = [];
 
     var q = async.queue(function (task, callback) {
-      var max_id = task.max_id;
+      var maxId = task.max_id;
       var params = { screen_name: screenName, count: API_BATCH_MAX };
-      if (max_id) {
-        params.max_id = max_id;
+      if (maxId) {
+        params.max_id = maxId;
       }
 
-      client.get('statuses/home_timeline', params, function (err, tweets, response) {
+      client.get('statuses/home_timeline', params, function (err, tweets) {
         if (err) {
           console.log('Twitter statuses/home_timeline API error', err);
         } else {
@@ -52,10 +54,10 @@ exports.default = {
             }
           }
 
-          var last_max_id = _.last(tweets).id;
+          var lastMaxId = _.last(tweets).id;
 
-          if (last_max_id && allTweets.length <= NUMBER_OF_TWEETS_TO_GATHER) {
-            q.push({ max_id: last_max_id });
+          if (lastMaxId && allTweets.length <= NUMBER_OF_TWEETS_TO_GATHER) {
+            q.push({ max_id: lastMaxId });
           }
         }
         callback();
@@ -98,7 +100,7 @@ exports.default = {
       finalCallback(null, nTweets.length, result);
     };
 
-    q.push({ max_id: null }); // kick off the first API call
+    q.push({ max_id: null });
   }
 };
 module.exports = exports['default'];

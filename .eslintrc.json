@@ -1,0 +1,11 @@
+{
+    "env": {
+        "mocha": true
+    },
+    "extends": "airbnb",
+    "plugins": [],
+    "rules": {
+      "strict": 0,
+      "comma-dangle": 0
+    }
+}
