@@ -10,7 +10,7 @@ var creds = {
 };
 
 var screenName = process.env.SCREEN_NAME;
-var NUMBER_OF_TWEETS_TO_GATHER = 800;
+var NUMBER_OF_TWEETS_TO_GATHER = 800; // 4 API calls. Twitter limit is 15 calls in 15 minutes.
 
 feedTamer.homeFeedContributors(creds, screenName, NUMBER_OF_TWEETS_TO_GATHER, function (err, finalTweetCount, contributors) {
   if (err) {

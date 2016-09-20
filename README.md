@@ -13,7 +13,26 @@ If those users are no longer interesting to you, try moving them to a Twitter li
 
 ## Usage
 
-    npm install feed-tamer
+    npm install feed-tamer --save
+
+## Sample application using feed-tamer
+
+The following sample app returns:
+
+```
+Analyzing 800 most recent tweets for "my_twitter_name"...
+Contributors to home feed:
+[ { name: 'user_abc', count: 74 },
+  { name: 'user_123', count: 28 },
+  ...
+  ...
+]
+```
+
+To run app:
+
+    clone https://github.com/briangershon/feed-tamer.git
+    cd feed-tamer
 
 ```
 export TWITTER_CONSUMER_KEY=""
@@ -28,7 +47,7 @@ export SCREEN_NAME="my_twitter_name"
 npm start
 ```
 
-which runs:
+which runs the following code:
 
 ```
 const feedTamer = require('feed-tamer');
@@ -41,7 +60,7 @@ const creds = {
 };
 
 const screenName = process.env.SCREEN_NAME;
-const NUMBER_OF_TWEETS_TO_GATHER = 800;
+const NUMBER_OF_TWEETS_TO_GATHER = 800;   // 4 API calls. Twitter limit is 15 calls in 15 minutes.
 
 feedTamer.homeFeedContributors(creds, screenName, NUMBER_OF_TWEETS_TO_GATHER, (err, finalTweetCount, contributors) => {
   if (err) {
@@ -52,16 +71,4 @@ feedTamer.homeFeedContributors(creds, screenName, NUMBER_OF_TWEETS_TO_GATHER, (e
     console.log(contributors);
   }
 });
-```
-
-### Results:
-
-```
-Analyzing 800 most recent tweets for "my_twitter_name"...
-Contributors to home feed:
-[ { name: 'user_abc', count: 74 },
-  { name: 'user_123', count: 28 },
-  ...
-  ...
-]
 ```
