@@ -23,7 +23,7 @@ export default {
       client.get('statuses/home_timeline', params, (err, tweets) => {
         if (err) {
           console.log('Twitter statuses/home_timeline API error', err);
-        } else {
+        } else if (tweets.length) {
           for (const tweet of tweets) {
             allTweets.push(tweet);
           }

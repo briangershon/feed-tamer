@@ -21,7 +21,11 @@
   },
   "scripts": {
     "start": "npm run build; node dist/tryit.js",
-    "build": "babel --no-comments src --out-dir dist"
+    "build": "babel --no-comments src --out-dir dist",
+    "pretest": "npm run build",
+    "test": "mocha --compilers js:babel-register --require intelli-espower-loader $(find src -name '*.spec.js')",
+    "posttest": "npm run lint",
+    "lint": "eslint src/**/*.js || true"
   },
   "dependencies": {
     "async": "^2.0.1",
@@ -36,6 +40,10 @@
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.3.0"
+    "eslint-plugin-react": "^6.3.0",
+    "intelli-espower-loader": "^1.0.1",
+    "mocha": "^3.0.2",
+    "nock": "^8.0.0",
+    "power-assert": "^1.4.1"
   }
 }

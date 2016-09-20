@@ -28,7 +28,7 @@ exports.default = {
       client.get('statuses/home_timeline', params, function (err, tweets) {
         if (err) {
           console.log('Twitter statuses/home_timeline API error', err);
-        } else {
+        } else if (tweets.length) {
           var _iteratorNormalCompletion = true;
           var _didIteratorError = false;
           var _iteratorError = undefined;
