@@ -1,6 +1,6 @@
 {
   "name": "feed-tamer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find list of users who contribute the most traffic to your Twitter home timeline",
   "author": "Brian Gershon <brian.five@gmail.com>",
   "license": "MIT",
