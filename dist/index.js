@@ -17,6 +17,7 @@ exports.default = {
 
     var NUMBER_OF_TWEETS_TO_GATHER = numberOfTweets;
     var allTweets = [];
+    var firstCall = true;
 
     var q = async.queue(function (task, callback) {
       var maxId = task.max_id;
@@ -28,13 +29,17 @@ exports.default = {
       client.get('statuses/home_timeline', params, function (err, tweets) {
         if (err) {
           console.log('Twitter statuses/home_timeline API error', err);
-        } else if (tweets.length) {
+        } else if (tweets.length > 1) {
+          var tweetsToProcess = tweets;
+          if (!firstCall) {
+            tweetsToProcess.shift();
+          }
           var _iteratorNormalCompletion = true;
           var _didIteratorError = false;
           var _iteratorError = undefined;
 
           try {
-            for (var _iterator = tweets[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            for (var _iterator = tweetsToProcess[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
               var tweet = _step.value;
 
               allTweets.push(tweet);
@@ -60,6 +65,7 @@ exports.default = {
             q.push({ max_id: lastMaxId });
           }
         }
+        firstCall = false;
         callback();
       });
     }, 1);

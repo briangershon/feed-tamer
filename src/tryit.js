@@ -16,10 +16,12 @@ feedTamer.homeFeedContributors(creds, screenName, NUMBER_OF_TWEETS_TO_GATHER,
   (err, finalTweetCount, contributors) => {
     if (err) {
       console.log('homeFeedContributors error', err);
-    } else {
+    } else if (finalTweetCount > 0) {
       console.log(`Analyzing ${finalTweetCount} most recent tweets for "${screenName}"...`);
       console.log('Contributors to home feed:');
       console.log(contributors);
+    } else {
+      console.log('No tweets retrieved.');
     }
   }
 );

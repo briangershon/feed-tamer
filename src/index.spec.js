@@ -99,9 +99,16 @@ describe('homeFeedContributors()', function () {
         }
       ]);
 
+    // 2nd call with max_id returns last record from previous call as first one in next
     nock('https://api.twitter.com')
       .get('/1.1/statuses/home_timeline.json?screen_name=testname&count=200&max_id=555')
       .reply(200, [
+        {
+          id: '555',
+          user: {
+            screen_name: 'screen_name_one'
+          }
+        },
         {
           id: '666',
           user: {
@@ -188,9 +195,16 @@ describe('homeFeedContributors()', function () {
         }
       ]);
 
+    // 2nd call with max_id returns last record from previous call as first one in next
     nock('https://api.twitter.com')
       .get('/1.1/statuses/home_timeline.json?screen_name=testname&count=200&max_id=555')
       .reply(200, [
+        {
+          id: '555',
+          user: {
+            screen_name: 'screen_name_two'
+          }
+        },
         {
           id: '666',
           user: {

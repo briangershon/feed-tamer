@@ -12,6 +12,7 @@ export default {
 
     const NUMBER_OF_TWEETS_TO_GATHER = numberOfTweets;
     const allTweets = [];
+    let firstCall = true;
 
     const q = async.queue((task, callback) => {
       const maxId = task.max_id;
@@ -23,8 +24,12 @@ export default {
       client.get('statuses/home_timeline', params, (err, tweets) => {
         if (err) {
           console.log('Twitter statuses/home_timeline API error', err);
-        } else if (tweets.length) {
-          for (const tweet of tweets) {
+        } else if (tweets.length > 1) {
+          const tweetsToProcess = tweets;
+          if (!firstCall) {
+            tweetsToProcess.shift();
+          }
+          for (const tweet of tweetsToProcess) {
             allTweets.push(tweet);
           }
           const lastMaxId = _.last(tweets).id;
@@ -33,6 +38,7 @@ export default {
             q.push({ max_id: lastMaxId });
           }
         }
+        firstCall = false;
         callback();
       });
     }, 1);
